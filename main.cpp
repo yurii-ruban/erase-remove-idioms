@@ -7,42 +7,52 @@
 
 using namespace std;
 
+
 //IOTA
+//It geners only unique numbers
 void gener_seq(vector<int> &arr)
 {
     iota(arr.begin(), arr.end(), 0);
 }
 
-//MAP
-void rnd(map<int, int> &book_struct)
+//MAP:
+
+//RANDOM
+void rnd(map<int, int> &book_struct, int size)
 {
     srand(time(0));
-    for (int i = 0;i<100;i++)
+    for (int i = 0;i<size;i++)
      {
          book_struct.insert ( pair<int,int>(i,rand()%10+1) );
      }
 }
 
+//PRINT
 void print (map<int, int> book_struct)
 {
     for (auto it = book_struct.begin(); it != book_struct.end(); ++it)
       {
-          cout << (*it).first << " : " << (*it).second << endl;
+          cout <<(*it).first << ":" << (*it).second <<endl;
       }
+    cout<<endl;
 }
 
-void del(map<int, int> &book_struct)
+//DELETE
+void del(map<int, int> &book_struct, int key)
 {
-    for (auto it = book_struct.begin(); it != book_struct.end(); ++it)
-      {
-        if((*it).second==8)
-        {
-            book_struct.erase(it);
-        }
-      }
+    auto it = book_struct.begin();
+    while (it != book_struct.end())
+    {
+
+        (*it).second==key ?book_struct.erase(it++):++it;
+
+    }
 }
 
-//VECTOR
+
+//VECTOR:
+
+//RANDOM
 void rnd(vector<int> &arr)
 {
     srand(time(0));
@@ -52,6 +62,7 @@ void rnd(vector<int> &arr)
     }
 }
 
+//PRINT
 void print(vector<int> arr)
 {
     for(vector<int>::iterator i= arr.begin();i!=arr.end();i++)
@@ -61,28 +72,30 @@ void print(vector<int> arr)
     cout<< endl;
 }
 
-void del(vector<int> &arr)
+//DELETE
+void del(vector<int> &arr, int key)
 {
-    arr.erase(remove(arr.begin(),arr.end(),8),arr.end());
-    //remove(arr.begin(),arr.end(),8);
+    arr.erase(remove(arr.begin(),arr.end(),key),arr.end());
 }
 
 int main(int argc, char *argv[])
 {
+    const int SIZE=100;
+    const int KEY=8;
     map <int, int> book_struct;
-    vector<int> arr(100);
+    vector<int> arr(SIZE);
 
     //VECTOR
-    rnd(arr);
     //gener_seq(arr);
+    rnd(arr);
     print(arr);
-    del(arr);
+    del(arr, KEY);
     print(arr);
 
     //MAP
-    rnd(book_struct);
+    rnd(book_struct,SIZE);
     print(book_struct);
-    del(book_struct);
+    del(book_struct, KEY);
     print(book_struct);
     return 0;
 }
