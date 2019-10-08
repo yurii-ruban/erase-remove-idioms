@@ -21,9 +21,9 @@ void gener_seq(vector<int> &arr)
 void rnd(map<int, int> &book_struct, int size)
 {
     srand(time(0));
-    for (int i = 0;i<size;i++)
+    for (int i = 0; i < size; i++)
      {
-         book_struct.insert ( pair<int,int>(i,rand()%10+1) );
+         book_struct.insert ( pair<int,int>(i, rand()%10 + 1) );
      }
 }
 
@@ -32,9 +32,9 @@ void print (map<int, int> book_struct)
 {
     for (auto it = book_struct.begin(); it != book_struct.end(); ++it)
       {
-          cout <<(*it).first << ":" << (*it).second <<endl;
+          cout << (*it).first << ":" << (*it).second << endl;
       }
-    cout<<endl;
+    cout << endl;
 }
 
 //DELETE
@@ -44,7 +44,7 @@ void del(map<int, int> &book_struct, int key)
     while (it != book_struct.end())
     {
 
-        (*it).second==key ?book_struct.erase(it++):++it;
+        (*it).second == key ? book_struct.erase(it++) : ++it;
 
     }
 }
@@ -65,9 +65,9 @@ void rnd(vector<int> &arr)
 //PRINT
 void print(vector<int> arr)
 {
-    for(vector<int>::iterator i= arr.begin();i!=arr.end();i++)
+    for(vector<int>::iterator i = arr.begin(); i!=arr.end(); i++)
     {
-        cout<<*i<<" ";
+        cout<< *i << " ";
     }
     cout<< endl;
 }
@@ -75,13 +75,13 @@ void print(vector<int> arr)
 //DELETE
 void del(vector<int> &arr, int key)
 {
-    arr.erase(remove(arr.begin(),arr.end(),key),arr.end());
+    arr.erase(remove(arr.begin(), arr.end(), key), arr.end());
 }
 
 int main(int argc, char *argv[])
 {
-    const int SIZE=100;
-    const int KEY=8;
+    const int SIZE = 100;
+    const int KEY = 8;
     map <int, int> book_struct;
     vector<int> arr(SIZE);
 
